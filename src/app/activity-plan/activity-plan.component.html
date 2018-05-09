@@ -1,0 +1,39 @@
+<div class = "tab-content">
+  <div class="activity-content">
+    
+    <span class = "ft-md ft-dark"> 
+      <i class="fa fa-book"></i>&nbsp;Before Lesson 
+    </span>
+    <p>Select and post an image--without words--for the activity...</p>
+    <p>
+      <i class="fa fa-download" style="color:blue;"></i>
+      <a href = "#">DOWNLOAD: Hanging Hashtag Think Sheet</a>
+    </p>
+    <div class = "tip" *ngFor = "let tip of tips">
+      <i class="fa fa-lightbulb"></i>&nbsp;TIP: {{ tip }}
+    </div>
+
+    <span class = "ft-md ft-dark">
+      <i class="fa fa-bell"></i>
+      &nbsp;During Lesson 
+    </span>
+    <ol class = "activity-list">
+      <li *ngFor = "let activity of activities">
+        {{ activity.detail }}        
+        <div  *ngIf = "activity.encourage" style="color:blue;">
+          <i class="fa fa-download" style="color:blue;"></i>
+          <strong>Encourage students to use </strong><a href="#">{{ activity.encourage }}</a>
+        </div>
+        <div *ngIf = "activity.warn" style="color:orange;">
+          <i class="fa fa-exclamation-circle" style="color:orange;"></i>
+          &nbsp;WATCH OUT FOR: {{ activity.warn }}
+        </div>
+        <div *ngIf = "activity.success" style="color:green;">
+          <i class="fa fa-check-circle" style="color:green;"></i>
+          &nbsp;SUCCESS: {{ activity.success }}
+        </div>
+      </li>
+    </ol>
+
+  </div>
+</div>

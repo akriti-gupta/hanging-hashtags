@@ -1,0 +1,106 @@
+<ng-template #commentModal let-c="close" let-d="dismiss">
+   
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #f="ngForm" name ="commentForm"> 
+  <div class="modal-body comment-modal">
+    
+      <textarea name="inputComment" [(ngModel)]="inputComment" required rows = "10" cols = "50" class="comment-box" placeholder="Comments"></textarea>
+        
+      <div class="radio">
+        <label>
+          <input [(ngModel)]="commentType" type="radio" name="commentType" value="1">
+          Public Comment
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input [(ngModel)]="commentType" type="radio" name="commentType" value="2">
+          Private Note
+        </label>
+      </div>
+    
+  </div>
+  
+  <div class="modal-footer">
+    <button (click) = "submitComment(commentModal)" 
+            type="button" 
+            [disabled]= "!f.valid"
+            class="btn btn-outline-dark">
+      Submit
+    </button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</form>
+</ng-template>
+  
+<span class = "ft-dark ft-lg">Comments ({{ comments.length + notes.length }})</span>
+
+<div style="padding: 2% 0%;">
+  <button class="btn hashtag-btn" (click) = "open(commentModal)">
+      <i class="fa fa-comment"></i>
+      Add New Comment
+  </button>
+</div>
+
+<div class="tabbed-container">
+  <div class="navbar navbar-light navbar-expand-lg">
+    <div class="navbar-collapse collapse" id="navbarContent">
+      <ul class="navbar-nav mr-auto hashtag-navbar">
+        
+        <li class="nav-item" [style.backgroundColor]="showComments ? 'white' : '#d8d7d7'">
+          <a href="#" style="color:#4c4b4b;" class="nav-link ft-md app-nav-col" (click) = "showComments = true; showNotes = false;">
+              Comments ({{ comments.length }})
+          </a>
+        </li>
+        
+        <li class="nav-item" [style.backgroundColor]="showNotes ? 'white' : '#d8d7d7'">
+          <a href="#" class="nav-link ft-md" style="color:#4c4b4b; "
+            (click) = "showNotes = true; showComments = false;">
+              Private Notes ({{ notes.length }})
+            </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class ="tab-content">
+    <div class = "actionTab">
+      <input type ="text" placeholder="Search Content"/>
+      <select name = "filterComment" 
+              class="hashtag-dropdown"
+              [(ngModel)] = "commentFilter"
+              (change)  = "filterComments()"
+              style="width: 20%;">
+        <option value = 1> Newest</option>
+        <option value = 2> Oldest</option>
+        <option value = 3> Popularity</option>
+      </select>
+    </div>
+
+    <div *ngIf = "showComments== true">
+        <div *ngFor = "let comment of comments" style="padding-bottom:2%;">
+          <span><img class="mr-3 avatar" src="{{ comment.avatar_url }}" alt="User image"></span>
+          <span><strong>{{ comment.educator | uppercase }}</strong></span>
+          <span>({{ comment.school }})</span>
+          <span>{{ comment.commentDate | date}}</span>
+          <div style="padding-left:8%;">
+            <a><i class="fa fa-thumbs-up"></i> </a>
+            {{ comment.likes }}
+          </div>
+        </div>
+      </div>
+    
+      <div *ngIf = "showNotes == true">
+          <div *ngFor = "let note of notes" style="padding-bottom:2%;">
+            <span>{{ note.text }}</span>
+            <span>{{ note.noteDate | date}}</span>
+        </div> 
+      </div>
+
+  </div>
+  
+</div>

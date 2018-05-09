@@ -1,0 +1,33 @@
+.supp-filter{
+    display: flex; 
+    justify-content: space-between; 
+    padding: 2% 0%;
+}
+.supp-cat{
+    border: 1px solid black;
+}
+.supp-lvl-ctr{
+    display:flex; 
+    justify-content: space-between; 
+    border-bottom: 1px solid black; 
+    padding: 3%;
+}
+.supp-lvl-action{
+    background-color: #d8d7d7;
+    height: fit-content;
+}
+.suppFilterOpt{
+    
+    border: 1px solid black;
+    position: absolute;
+    top: 78%;
+    background-color: #d8d7d7;
+}
+.filter-box{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.filter{
+    border-right: 1px solid black;
+    padding: 1%;
+}

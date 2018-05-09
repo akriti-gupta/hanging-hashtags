@@ -1,0 +1,30 @@
+.comment-modal{
+    text-align: center;
+}
+.comment-modal .radio{
+    text-align: left;
+    padding-left: 2%;
+}
+.comment-type{
+    padding: 2% ;
+}
+.comment-type input{
+    margin: 2%;
+}
+.comment-box{
+    border: 1px solid black;
+    resize:none;
+    padding: 2%;
+}
+.comment-box:focus{
+    outline: none;
+}
+.actionTab{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2%;
+}
+.actionTab input{
+    border-radius: 5px;
+    width: 25%;
+}

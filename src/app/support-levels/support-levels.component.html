@@ -1,0 +1,95 @@
+<ng-template #students let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Student Information</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+      
+  <div class="modal-body">
+    <div *ngFor = "let student of studentResult">
+      {{ student.name }}
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<span class = "ft-dark ft-lg"> Support Levels</span>
+
+<div class = "supp-filter">
+  <div (click) = "showFilter = true"
+        class="btn hashtag-btn" style="position: relative;">
+        Show Filters
+  </div>
+
+  <div *ngIf = "showFilter == true" class = "suppFilterOpt">
+    <div class = "filter-box">
+      <div class = "filter">
+        <div style="padding-bottom:1%;"><strong>Gender</strong> </div>
+        <div>
+          <label>
+            <input type="checkbox" [(ngModel)]="gender.male" name="isMale">
+            Male
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="gender.female" name="isFemale">
+            Female
+          </label>
+        </div>
+      </div>
+
+      <div class = "filter">
+        <div style="padding-bottom:1%;"> <strong>Grades</strong> </div>
+        <span *ngFor = "let grade of grades">
+          <label>
+            <input type="checkbox" [(ngModel)]="grade.value" name="grade">
+            Grade {{ grade.grade }}&nbsp;
+          </label>
+        </span>
+      </div>
+    </div>
+    <div style="text-align: center;padding:1%;">
+    <button (click)="applyFilter()" class = "btn hashtag-btn"> Apply Filter </button>
+    <button (click)="showFilter=false;" class = "btn hashtag-btn"> Cancel </button>
+  </div>
+  </div>
+<!-- </div> -->
+  <div>
+    <button class="btn hashtag-btn">
+      <i class="fa fa-thumbs-up"></i>
+        Batch Recommended
+    </button>
+  </div>
+  
+</div>
+
+<div *ngFor="let category of categories" class ="supp-cat">
+  
+  <div class = "supp-lvl-ctr">
+    <div>
+      <span class="ft-md app-nav-col">{{category.level}}: </span> 
+      <span class="ft-sm">Speaking {{category.speaks}}</span>
+    </div>
+    <div>
+      <span>
+        <a href="#" (click) = "open(students, category.students)">
+          {{category.students.length}} Students
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <div class = "supp-lvl-action">
+    <ul>
+      <li *ngFor="let action of category.action" style="padding-top: 2%;">
+        {{ action }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+

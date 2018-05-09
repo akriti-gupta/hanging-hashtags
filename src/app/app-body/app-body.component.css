@@ -1,0 +1,22 @@
+iframe{
+    /* height: calc(100vh - 520px); */
+    /* height: auto; */
+    /* width: 95%; */
+    width: 34vw;
+    background: black;
+}
+.body-container{
+    display: flex;
+    /* padding: 2% 0 0;  */
+    padding: 1.5%;
+}
+.body-pnl-left{
+    width:65%;
+    margin-right: 2%;
+}
+
+.body-pnl-rt{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}

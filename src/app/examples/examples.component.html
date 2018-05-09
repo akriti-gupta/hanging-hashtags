@@ -1,0 +1,47 @@
+<div class = "tab-content">
+  <select [(ngModel)]="gradeVal" name="grade" #grade = "ngModel"
+          (change) = "changeCourse()"
+          class="hashtag-dropdown">
+    <option *ngFor="let grade of grades" [value]="grade">
+      Grades: {{ grade }}
+    </option>
+  </select>
+
+  <select [(ngModel)]="subjectVal" name="subject" #subject = "ngModel"
+            (change) = "changeCourse()"
+            class="hashtag-dropdown">
+    <option *ngFor="let subject of subjects" [value]="subject">
+      Subject: {{ subject }}
+    </option>
+  </select>
+  <div class = "ft-dark ft-lg" style="padding-top:2%;"> 
+    {{ grade.value }}   {{ subject.value }} 
+  </div>
+</div>
+
+<div class = "example-ctr">
+  
+  <div class = "objective-ctr">
+    
+    <div class="objective-content">
+      
+      <div class = "objective">
+        <span class="ft-dark ft-md">Content Objective</span>
+        <span>Student will recognize volume as an attribute of solid figures.</span>
+      </div>
+    
+      <div class = "objective">
+        <span class="ft-dark ft-md">Language Objective: </span>
+        <span>Students will work to describe objects using prepositions.</span>
+      </div>
+    
+    </div>
+  
+  </div>
+
+  <div *ngFor = "let detail of courseDetail" class = "example-dtl">
+      {{ detail }}
+  </div>
+
+</div>
+  

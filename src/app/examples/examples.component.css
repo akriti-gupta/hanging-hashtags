@@ -1,0 +1,21 @@
+.example-ctr{
+    border: 1px solid black;
+}
+.objective-ctr{
+    border-bottom: 1px solid black;
+    background-color: #d8d7d7;
+    
+}
+.objective-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+.objective{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.example-dtl{
+    padding: 1% 2%;
+}
