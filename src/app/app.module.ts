@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 import { AppComponent } from './app.component';
 import { RatingComponent } from './rating/rating.component';
@@ -20,6 +21,7 @@ import { AppBodyComponent } from './app-body/app-body.component';
 import { SupportLevelsComponent } from './support-levels/support-levels.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NotesComponent } from './notes/notes.component';
+import { CommentModalComponent } from './comment-modal/comment-modal.component';
 
 
 @NgModule({
@@ -38,11 +40,13 @@ import { NotesComponent } from './notes/notes.component';
     AppBodyComponent,
     SupportLevelsComponent,
     CommentsComponent,
-    NotesComponent
+    NotesComponent,
+    CommentModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BootstrapModalModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {
@@ -67,7 +71,10 @@ import { NotesComponent } from './notes/notes.component';
   providers: [
     RatingService,
     NgbActiveModal],
-    
+
+    entryComponents: [
+      CommentModalComponent
+    ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

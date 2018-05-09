@@ -1,0 +1,36 @@
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form #f="ngForm" name ="commentForm"> 
+       <div class="modal-header">
+         <h4>{{ title }} </h4>
+         <button type="button" class="close" (click)="close()" >&times;</button>
+       </div>
+       <div class="modal-body">
+          <textarea name="inputComment" [(ngModel)]="inputComment" required rows = "10" cols = "50" class="comment-box" placeholder="Comments"></textarea>
+          
+          <div class="radio">
+            <label>
+              <input [(ngModel)]="commentType" type="radio" name="commentType" value="1">
+              Public Comment
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input [(ngModel)]="commentType" type="radio" name="commentType" value="2">
+              Private Note
+            </label>
+          </div>
+       </div>
+       <div class="modal-footer">
+        <button (click) = "submitComment()" 
+          type="button" 
+          [disabled]= "!f.valid"
+          class="btn hashtag-btn">
+        Submit
+        </button>
+         <button type="button" class="btn hashtag-btn" (click)="close()" >Cancel</button>
+       </div>
+       </form>
+     </div>
+    </div>

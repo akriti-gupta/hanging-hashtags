@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { DialogService } from 'ng2-bootstrap-modal';
+import { CommentModalComponent } from '../comment-modal/comment-modal.component';
 
 @Component({
   selector: 'comments',
@@ -8,7 +10,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private activeModal: NgbActiveModal) { }
+  constructor(private modalService: NgbModal, private activeModal: NgbActiveModal,private dialogService:DialogService) { }
 
   ngOnInit() {
   }
@@ -59,6 +61,20 @@ export class CommentsComponent implements OnInit {
     this.modalService.open(modal);
   }
 
+  showComment(){
+    let disposable = this.dialogService.addDialog(CommentModalComponent,
+      {
+        title:'Add Comment or a Private note', 
+        message:'Enter Comment'
+      }).subscribe((commentAdded)=>{
+          if(commentAdded) {
+              alert('Comment Added in DB');
+          }
+      });
+    setTimeout(()=>{
+      disposable.unsubscribe();
+    },10000);
+  }
   submitComment(commentModal){
     
     this.activeModal.close(commentModal);
