@@ -22,7 +22,8 @@
 <div class = "supp-filter">
   <div (click) = "showFilter = true"
         class="btn hashtag-btn" style="position: relative;">
-        Show Filters
+    <span>Show Filters</span>
+    <span><i class="fa fa-sort-down"  style="vertical-align:top;"></i></span>
   </div>
 
   <div *ngIf = "showFilter == true" class = "suppFilterOpt">

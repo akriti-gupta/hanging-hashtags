@@ -7,10 +7,11 @@
     <p>Select and post an image--without words--for the activity...</p>
     <p>
       <i class="fa fa-download" style="color:blue;"></i>
-      <a href = "#">DOWNLOAD: Hanging Hashtag Think Sheet</a>
+      <a href = "#"><strong>DOWNLOAD:</strong> Hanging Hashtag Think Sheet</a>
     </p>
     <div class = "tip" *ngFor = "let tip of tips">
-      <i class="fa fa-lightbulb"></i>&nbsp;TIP: {{ tip }}
+      <span><i class="far fa-lightbulb"></i></span>
+      <span>TIP: {{ tip }}</span>
     </div>
 
     <span class = "ft-md ft-dark">
@@ -26,11 +27,11 @@
         </div>
         <div *ngIf = "activity.warn" style="color:orange;">
           <i class="fa fa-exclamation-circle" style="color:orange;"></i>
-          &nbsp;WATCH OUT FOR: {{ activity.warn }}
+          <strong>WATCH OUT FOR:</strong>{{ activity.warn }}
         </div>
         <div *ngIf = "activity.success" style="color:green;">
           <i class="fa fa-check-circle" style="color:green;"></i>
-          &nbsp;SUCCESS: {{ activity.success }}
+          <strong>SUCCESS:</strong> {{ activity.success }}
         </div>
       </li>
     </ol>

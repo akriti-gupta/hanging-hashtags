@@ -46,6 +46,11 @@ import { NotesComponent } from './notes/notes.component';
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: 'about',
+        pathMatch: 'full'
+      },
+      {
         path: 'about',
         component: AboutComponent
       },

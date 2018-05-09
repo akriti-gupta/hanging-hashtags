@@ -6,37 +6,46 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-    
-  <div class="modal-body">
-    <input id="typeahead-format" 
-            type="text" class="form-control" 
-            [(ngModel)]="recipient" 
-            [ngbTypeahead]="search" 
-            [resultFormatter]="formatter" 
-            (keyup.enter) = "updateRecipients()" 
-             placeholder = "Enter name/ email"
-            name ="shareList" 
-            #shareList ="ngModel"/>
+  <form #f="ngForm" name ="shareForm">
+    <div class="modal-body">
+      
+      <input id="typeahead-format" 
+              required
+              type="text" class="form-control" 
+              [(ngModel)]="recipient" 
+              [ngbTypeahead]="search" 
+              [resultFormatter]="formatter" 
+              (keyup.enter) = "updateRecipients()" 
+              placeholder = "Enter name/ email"
+              name ="shareList" 
+              #shareList ="ngModel"/>
 
-    <div *ngIf = "recipientArray.length > 0" style ="padding-top:2%;">
-      <div *ngFor="let recipient of recipientArray; let idx = index" >
-        <div>
-          {{ recipient }} 
-          <span style="padding-left:1%;"><a href="#" (click)="removeRecipient(idx)">x</a></span>
+      <div *ngIf = "recipientArray.length > 0" style ="padding-top:2%;">
+        <div *ngFor="let recipient of recipientArray; let idx = index" >
+          <div>
+            {{ recipient }} 
+            <span style="padding-left:1%;"><a href="#" (click)="removeRecipient(idx)">x</a></span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="shareActivity(shareModal)">Share</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-  </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" 
+                (click)="shareActivity(shareModal)"
+                [disabled]= !f.valid>
+          Share
+        </button>
+      <button type="button" class="btn btn-outline-dark"
+              (click)="c('Close click')">Close
+      </button>
+    </div>
+  </form>
 </ng-template>
 
-<a role="button" class="btn-wrapper" (click) = "open(shareModal)">
-    <i class="fa fa-share" style="color:white;"></i>
+<div class="btn-wrapper hashtag-btn" (click) = "open(shareModal)">
+    <span><i class="fa fa-share"></i></span>
     <span class="btn-lbl">Share</span>
     <span class="btn-lbl-counter">1</span>
-  </a>
+</div>
   
